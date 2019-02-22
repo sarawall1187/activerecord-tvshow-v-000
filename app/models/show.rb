@@ -9,6 +9,6 @@ class Show < ActiveRecord::Base
   end
 
   def Show::lowest_rating
-    Show.where(rating:).last
+    Show.where("rating").last
   end
 end
