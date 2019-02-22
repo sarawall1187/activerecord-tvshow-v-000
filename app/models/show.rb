@@ -9,6 +9,23 @@ class Show < ActiveRecord::Base
   end
 
   def Show::lowest_rating
-    Show.where("rating < Show::highest_rating").last
+    Show.minimum(:rating)
+
+  end
+
+  def Show::least_popular_show
+   Show.order(:rating).first
+  end
+
+  def Show::ratings_sum
+    Show.sum(:rating)
+  end
+
+  def Show::popular_shows
+    Show.where("rating > 5")
+  end
+
+  def Show::shows_by_alphabetical_order
+    Show.order(:name)
   end
 end
